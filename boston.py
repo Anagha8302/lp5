@@ -122,7 +122,21 @@ history = model.fit(X_train,y_train,epochs=20,batch_size=512,validation_data=(x_
 
 
 # In[28]:
+import matplotlib.pyplot as plt
 
+# Get training history
+training_loss = history.history['loss']
+validation_loss = history.history['val_loss']
+
+# Plot training and validation loss
+epochs = range(1, len(training_loss) + 1)
+plt.plot(epochs, training_loss, 'bo', label='Training loss')
+plt.plot(epochs, validation_loss, 'r', label='Validation loss')
+plt.title('Training and Validation Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
 
 results = model.evaluate(X_test, y_test)
 
