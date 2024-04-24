@@ -46,6 +46,9 @@ int main()
         arr_par[i] = rand_num;
     }
 
+    cout << "Array before sorting:" << endl;
+    printArray(arr_seq, n);
+
     // Sequential Bubble Sort
     clock_t start_seq = clock();
     bubbleSort(arr_seq, n);
@@ -53,6 +56,8 @@ int main()
     double sequentialBubbleTime = double(end_seq - start_seq) / CLOCKS_PER_SEC;
 
     cout << "Sequential Bubble Sort Time: " << sequentialBubbleTime << " seconds" << endl;
+    cout << "Sorted array after sequential bubble sort:" << endl;
+    printArray(arr_seq, n);
 
     // Parallel Bubble Sort
     clock_t start_par = clock();
@@ -64,12 +69,15 @@ int main()
     double parallelBubbleTime = double(end_par - start_par) / CLOCKS_PER_SEC;
 
     cout << "Parallel Bubble Sort Time: " << parallelBubbleTime << " seconds" << endl;
+    cout << "Sorted array after parallel bubble sort:" << endl;
+    printArray(arr_par, n);
 
     delete[] arr_seq;
     delete[] arr_par;
 
     return 0;
 }
+
 /*----------------------------------------------------------------------------------mergeSOrt----------------------------*/
 
 #include <iostream>
@@ -174,17 +182,24 @@ int main() {
         arr_par[i] = rand_num;
     }
 
+    cout << "Array before sorting:" << endl;
+    printArray(arr_seq, n);
+
     clock_t start_seq = clock();
     mergeSortSequential(arr_seq, 0, n - 1);
     clock_t end_seq = clock();
     double sequentialMS = double(end_seq - start_seq) / CLOCKS_PER_SEC;
-    cout << "Sequential time: " << sequentialMS << " seconds" << endl;
+    cout << "Sequential Merge Sort Time: " << sequentialMS << " seconds" << endl;
+    cout << "Sorted array after sequential merge sort:" << endl;
+    printArray(arr_seq, n);
 
     clock_t start_par = clock();
     mergeSortParallel(arr_par, 0, n - 1);
     clock_t end_par = clock();
     double parallelMergeTime = double(end_par - start_par) / CLOCKS_PER_SEC;
     cout << "Parallel Merge Sort Time: " << parallelMergeTime << " seconds" << endl;
+    cout << "Sorted array after parallel merge sort:" << endl;
+    printArray(arr_par, n);
 
     delete[] arr_seq;
     delete[] arr_par;
